@@ -147,4 +147,4 @@ client.on("guildMemberRemove", async member => {
 })
 
 
-client.on("message", async message => {})
+  
