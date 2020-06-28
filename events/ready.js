@@ -7,24 +7,8 @@ var prefix = ayarlar.prefix;
 
 
 module.exports = client => {
-  console.log(`${client.user.username}: Şu an ` + client.channels.cache.size + ` adet kanala, ` + client.guilds.cache.size + ` adet sunucuya ve ` + client.users.cache.size + ` kullanıcıya hizmet veriliyor!`);  
-  //---------AKTİFLİK DURUMU İÇİN---------
-  // client.user.setStatus("dnd");
-  //idle = BOŞTA
-  //online = ÇEVRİMİÇİ
-  //dnd = RAHATSIZ ETMEYİN
-  //---------AKTİFLİK DURUMU İÇİN---------
-  
-  
-  //---------DURUM İÇİN---------
-  //client.user.setActivity(`Deneme`,{ type: 'LISTENING' });
-  //LISTENING = DİNLİYOR
-  //WATCHING = İZLİYOR
-  //PLAYING = OYNUYOR 
-  //---------DURUM İÇİN---------
-  
-  
-  //---------YAYIN İÇİN---------
+  console.log(`BU ALTYAPI FORCEX TARANFINDAN YAPILMISDIR IYI KULLANMALAR`);  
+
   client.user.setActivity("Xountex", {
   type: "STREAMING",
   url: "https://www.twitch.tv/xountex"

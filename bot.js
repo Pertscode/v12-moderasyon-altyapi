@@ -121,30 +121,3 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 //--------------------------------KODLAMALAR-------------------------------\\
-client.on("ready", async () => {
-  var channel = client.channels.cache.get("726880736136790129"); // YAZIYOR GÖRÜNMESİNİ İSTEDİĞİNİZ KANAL İD
-  function Lewis(kod) {
-   kod.startTyping();
-  }
- Lewis(channel);
-});
-
-
-
-client.on("guildMemberAdd", async member => {
-  let sayı = await db.fetch(`sayaç_${member.guild.id}`)
-  let kanal = await db.fetch(`sayaçK_${member.guild.id}`) 
-  if(!sayı) return
-  if(!kanal) return
-  client.channels.cache.get(kanal).send(`:loudspeaker: :inbox_tray: ${member} adlı üye sunucuya girdi **${sayı}** kişi olamamıza **${sayı - member.guild.members.cache.size}** üye kaldı! Şuan **${member.guild.memberCount}** kişiyiz`)
-})
-client.on("guildMemberRemove", async member => {
-  let sayı = await db.fetch(`sayaç_${member.guild.id}`)
-  let kanal = await db.fetch(`sayaçK_${member.guild.id}`)
-  if(!sayı) return
-  if(!kanal) return
-  client.channels.cache.get(kanal).send(`:loudspeaker: :outbox_tray: ${member} adlı üye sunucudan çıktı **${sayı}** kişi olamamıza **${sayı - member.guild.members.cache.size}** üye kaldı! Şuan **${member.guild.memberCount}** kişiyiz`)
-})
-
-
-  
