@@ -12,6 +12,7 @@ setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 const Discord = require("discord.js");
+const db = require('quick.db')
 const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
 const consts = require("./consts.json");
@@ -120,69 +121,30 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 //--------------------------------KODLAMALAR-------------------------------\\
-
-
-//----------------------------------HOSGELDIN-----------------------------//
-client.on("guildMemberAdd", member => {
-  const ok_embed = {
-    thumbnail: {
-      url: member.user.avatarURL({dynamic:true})//user_image_url
-    },
-    image: {
-      url: "https://i.ibb.co/Jkx38NQ/charby.png"
-    },
-    description:
-      ":beginner:  " +
-      `${member}` +
-      " Seninle birlikte **" +
-      member.guild.memberCount +
-      "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :large_orange_diamond: Bu kullanıcı : **GÜVENLİ** \n\n :watch: Hesap kuruluş zamanı: **" +
-      moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
-      "**",
-    timestamp: new Date()
-  };
-
-  const err_embed = {
-    thumbnail: {
-      url: member.user.avatarURL({dynamic:true}) //user_image_url
-    },
-    image: {
-      url: "https://i.ibb.co/Jkx38NQ/charby.png"
-    },
-    description:
-      ":beginner:  " +
-      `${member}` +
-      " Seninle birlikte **" +
-      member.guild.memberCount +
-      "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :x: Bu kullanıcı : **TEHLİKELİ** \n\n :watch: Hesap kuruluş zamanı: **" +
-      moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
-      "**",
-    timestamp: new Date()
-  };
-  var karantina = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.karantina_role)
-  var kayıtsız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.unregister_role)
-  var x = moment(member.user.createdAt)
-    .add(5, "days")
-    .fromNow();
-  x = x.replace("birkaç saniye önce", " ");
-
-  if (!x.includes("önce") || x.includes("sonra") || x == " ") {
-    setTimeout(async () => {
-      if (member.roles.cache.has(kayıtsız)) {
-        member.roles.remove(kayıtsız);
-      }
-    }, 500);
-    setTimeout(async () => {
-      await member.roles.add(karantina);
-    }, 500);
-    member.guild.channels.cache.get(consts.welcome_channel).send({embed: err_embed});
-  } else {
-    setTimeout(async () => {
-      if (!member.roles.cache.has(kayıtsız)) {
-        member.roles.add(kayıtsız);
-      }
-    }, 500);
-    member.guild.channels.cache.get(consts.welcome_channel).send({embed:ok_embed});
+client.on("ready", async () => {
+  var channel = client.channels.cache.get("726880736136790129"); // YAZIYOR GÖRÜNMESİNİ İSTEDİĞİNİZ KANAL İD
+  function Lewis(kod) {
+   kod.startTyping();
   }
+ Lewis(channel);
 });
-//----------------------------------HOSGELDIN-----------------------------//
+
+
+
+client.on("guildMemberAdd", async member => {
+  let sayı = await db.fetch(`sayaç_${member.guild.id}`)
+  let kanal = await db.fetch(`sayaçK_${member.guild.id}`) 
+  if(!sayı) return
+  if(!kanal) return
+  client.channels.cache.get(kanal).send(`:loudspeaker: :inbox_tray: ${member} adlı üye sunucuya girdi **${sayı}** kişi olamamıza **${sayı - member.guild.members.cache.size}** üye kaldı! Şuan **${member.guild.memberCount}** kişiyiz`)
+})
+client.on("guildMemberRemove", async member => {
+  let sayı = await db.fetch(`sayaç_${member.guild.id}`)
+  let kanal = await db.fetch(`sayaçK_${member.guild.id}`)
+  if(!sayı) return
+  if(!kanal) return
+  client.channels.cache.get(kanal).send(`:loudspeaker: :outbox_tray: ${member} adlı üye sunucudan çıktı **${sayı}** kişi olamamıza **${sayı - member.guild.members.cache.size}** üye kaldı! Şuan **${member.guild.memberCount}** kişiyiz`)
+})
+
+
+client.on("message", async message => {})
