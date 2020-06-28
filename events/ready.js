@@ -9,9 +9,8 @@ var prefix = ayarlar.prefix;
 module.exports = client => {
   console.log(`BU ALTYAPI FORCEX TARANFINDAN YAPILMISDIR IYI KULLANMALAR`);  
 
-  client.user.setActivity("Xountex", {
-  type: "STREAMING",
-  url: "https://www.twitch.tv/xountex"
+  client.user.setActivity("SA", {
+  
   });
   //---------YAYIN İÇİN---------
 };
