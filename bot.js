@@ -15,7 +15,6 @@ const Discord = require("discord.js");
 const db = require('quick.db')
 const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
-const consts = require("./consts.json");
 const fs = require("fs");
 const moment = require("moment");
 moment.locale("tr")
