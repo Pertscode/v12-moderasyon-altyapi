@@ -7,9 +7,9 @@ var prefix = ayarlar.prefix;
 
 
 module.exports = client => {
-  console.log(`BU ALTYAPI FORCEX TARANFINDAN YAPILMISDIR IYI KULLANMALAR`);  
+  console.log(``);  
 
-  client.user.setActivity("SA", {
+  client.user.setActivity("Youtube.Com/OgünSertKobs", {
   
   });
   //---------YAYIN İÇİN---------
