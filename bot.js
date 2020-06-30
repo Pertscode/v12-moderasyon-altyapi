@@ -140,7 +140,7 @@ client.on('guildMemberAdd', member => {
 
 client.on("guildMemberAdd", member => {  
   const kanal = "727556810499817576";
-  let user = client.users.get(member.id);
+  let user = client.users.cache.get(member.id);
   require("moment-duration-format");
     const kurulus = new Date().getTime() - user.createdAt.getTime();  
     var kontrol;
@@ -155,19 +155,3 @@ buse.send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount
 
 
 ///////////////şüpheli Hsap/////////////////
-
-
-client.on("guildMemberAdd", async (member) => {
-      let gkisi = client.users.get(member.id);
-      const ktarih = new Date().getTime() - gkisi.createdAt.getTime();   
-
-    if (ktarih < 2592000001) {
-    member.roles.add("ŞüpheliRolİD")
-    
-    }else{
-    
-    member.roles.add("KayıtsızRolİD")
-    
-      }
-});
-
