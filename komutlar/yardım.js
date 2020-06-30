@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 exports.run = async(client, message) => {
   
     const y = new Discord.MessageEmbed()
+    .setColor('RED')
     .addField('**Kayıt**','`!erkek : Bir Kişiyi Erkek Olarak Kayıt Edersin`')
     .addField('**Kayıt**','`!kız : Bir Kişiyi Kız Olarak Kayıt Edersin`')
     .addField('**İstatistik**','`!i : Botun İstatistiklerini Gösterir`')
