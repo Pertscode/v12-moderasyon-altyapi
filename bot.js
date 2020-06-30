@@ -136,7 +136,9 @@ if(msg.content == 'tag')
 
 client.on("guildMemberAdd", member => {  
   const kanal = "727556810499817576";
-client.channels.cache.get(kanal).send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  Sunucuya Kayıt Olmak İçin #kayıt-chat'a İsim Yaş Yazınız ! \n\n  Kayıt Sorumlusu Rolündeki yetkililer sizinle ilgilenicektir  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**"))
+client.channels.cache.get(kanal).send("**Hoşgeldin! <@" + member + "> Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  Sunucuya Kayıt Olmak İçin <#727566210354380810> İsim Yaş Yazınız ! \n\n <@&727571240927100929> Kayıt Sorumlusu Rolündeki yetkililer sizinle ilgilenicektir  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**"))
+
+  
 });
 
 
@@ -145,7 +147,8 @@ client.channels.cache.get(kanal).send("**Hoşgeldin! " + member + " Seninle __\`
 
 
 client.on("guildMemberAdd", async (member) => {
-      const ktarih = new Date().getTime() - member.createdAt.getTime();   
+    let gkisi = client.users.cache.get(member.id);
+      const ktarih = new Date().getTime() - gkisi.createdAt.getTime();   
 
     if (ktarih < 2592000001) {
     member.roles.add("727563548120580229")
