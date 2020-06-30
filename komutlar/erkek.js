@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 
 exports.run = async(client, message, args) => {
-   if(!message.member.roles.cache.has('727200383507628184')) return message.channel.send('Bu komutu kullanabilmek için <@&YetkiliRolİD> Sahıp Olmalısınız')
+   if(!message.member.roles.cache.has('727200383507628184')) return message.channel.send('Bu komutu kullanabilmek için <@&727200383507628184>Rolüne Sahıp Olmalısınız')
    let member = message.mentions.users.first() 
    if(!member) {
        return message.channel.send('Bir kişi etiketlemelisin')

@@ -9,7 +9,7 @@ var prefix = ayarlar.prefix;
 module.exports = client => {
   console.log(``);  
 
-  client.user.setActivity("Youtube.Com/OgünSertKobs", {
+  client.user.setActivity("OgünSert", {
   
   });
   //---------YAYIN İÇİN---------
