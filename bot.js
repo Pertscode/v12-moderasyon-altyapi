@@ -132,26 +132,27 @@ if(msg.content == 'tag')
 })
 
 
-/////OTOİSİM
-client.on('guildMemberAdd', member => {
- member.setNickname('İsimYaş')////YENI GELENLERE VERILCEK ISIM
-})
 
 
 client.on("guildMemberAdd", member => {  
   const kanal = "727556810499817576";
-  let user = client.users.cache.get(member.id);
-  require("moment-duration-format");
-    const kurulus = new Date().getTime() - user.createdAt.getTime();  
-    var kontrol;
-if (kurulus < 1296000000) kontrol = ' **__Bu Hesap Güvenilir Değil__** '
-if (kurulus > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
-  moment.locale("tr");
-  let buse = client.channels.cache.get(kanal);
-buse.send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  Sunucuya Kayıt Olmak İçin #kayıt-chat'a İsim Yaş Yazınız ! \n\n  Kayıt Sorumlusu Rolündeki yetkililer sizinle ilgilenicektir  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**") +  "  \n\n"  + kontrol + " \n\n",  new Discord.Attachment("https://media.discordapp.net/attachments/712292800237928520/727554199839047741/harley.gif"
-    )
-  );
+client.channels.cache.get(kanal).send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  Sunucuya Kayıt Olmak İçin #kayıt-chat'a İsim Yaş Yazınız ! \n\n  Kayıt Sorumlusu Rolündeki yetkililer sizinle ilgilenicektir  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**"))
 });
 
 
 ///////////////şüpheli Hsap/////////////////
+///////////////şüpheli Hsap/////////////////
+
+
+client.on("guildMemberAdd", async (member) => {
+      const ktarih = new Date().getTime() - member.createdAt.getTime();   
+
+    if (ktarih < 2592000001) {
+    member.roles.add("727563548120580229")
+    
+    }else{
+    
+      member.roles.add("727563530806755359")
+    
+      }
+});
