@@ -120,3 +120,36 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 //--------------------------------KOMUTLAR-------------------------------\\
+client.on('message' , msg => {
+  
+if(msg.content == '!tag')
+  msg.channel.send("Nîght₴")
+})
+
+  client.on('message' , msg => {
+if(msg.content == 'tag')
+  msg.channel.send("Nîght₴")
+})
+
+
+/////OTOİSİM
+client.on('guildMemberAdd', member => {
+ member.setNickname('İsimYaş')////YENI GELENLERE VERILCEK ISIM
+})
+
+
+client.on("guildMemberAdd", member => {  
+  const kanal = "KanalİD";
+  let user = client.users.get(member.id);
+  require("moment-duration-format");
+    const kurulus = new Date().getTime() - user.createdAt.getTime();  
+    var kontrol;
+if (kurulus < 1296000000) kontrol = ' **__Bu Hesap Güvenilir Değil__** '
+if (kurulus > 1296000000) kontrol = ' **__Bu Hesap Güvenilir Gözüküyor__** '
+  moment.locale("tr");
+  let buse = client.channels.get(kanal);
+buse.send("**Hoşgeldin! " + member + " Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  Sunucuya Kayıt Olmak İçin #kayıt-chat'a İsim Yaş Yazınız ! \n\n  Kayıt Sorumlusu Rolündeki yetkililer sizinle ilgilenicektir  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**") +  "  \n\n"  + kontrol + " \n\n",  new Discord.Attachment("https://media.giphy.com/media/dayIK7bQLhb4BCFlHN/giphy.gif"
+    )
+  );
+});
+
