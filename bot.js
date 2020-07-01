@@ -120,81 +120,39 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 //--------------------------------KOMUTLAR-------------------------------\\
-client.on('message' , msg => {
-  
-if(msg.content == '!tag')
-  msg.channel.send("Nîght₴")
-})
-
-  client.on('message' , msg => {
-if(msg.content == 'tag')
-  msg.channel.send("Nîght₴")
-})
-
-
-
-client.on("guildMemberAdd", member => { 
-  const kanal = "712292800237928520";
-  let user = client.users.cache.get(member.id);
-  require("moment-duration-format");
-    const kurulus = new Date().getTime() - user.createdAt.getTime();  
-
- 
-  var kontrol;
-if (kurulus < 1296000000) kontrol = '  **__Bu Hesap Güvenilir Değil__** <a:unlem:691212268787990578> '
-if (kurulus > 1296000000) kontrol = '   **__Bu Hesap Güvenilir Gözüküyor__** <a:tik2:712666264304222228>  '
-  moment.locale("tr");
-  let buse = client.channels.cache.get(kanal);
-buse.send(`
-  <a:Nightta2:710009174490349578> Hoşgeldin! ${member} Seninle Birlikte \`${member.guild.memberCount}\` Kişiyiz.
-
-<a:Nightta2:710009174490349578> Müsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
-
-<a:Nightta2:710009174490349578> <@&727875883939135508> seninle ilgilenicektir.
-
-<a:Nightta2:710009174490349578> Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
-
-${kontrol} 
-
-Tagımızı alarak Nîght₴ bize destek olabilirsin.`)
-
-});
-
-///////////////şüpheli Hsap/////////////////
-///////////////şüpheli Hsap/////////////////
-
-
-client.on("guildMemberAdd", async (member) => {
-  
-    
-      member.roles.add("712330085247746132")
-    
-      
-})
-
-
-/////DM HG
-client.addListener("guildMemberAdd", async function(member) {
-  if (member.user.bot) return;
-  return member.user.send(`Sunucumuza Hoşgeldın Nîght₴ Tagımızı Alarak Aılemıze Katılabılırsın Kayıt Olmak Icın **V.Confirmed** Odasına Gecıp Kayıt Sorumlurlarını Etıketliyebılırsın`)
-})
-
-////SESLI ODA GIRIS
-client.on("ready", async function() {
-const voiceChannel = "703336681205399582"
-client.channels.cache.get(voiceChannel).join()
-.catch(err => {
-throw err;
-})
-})
-
-
-////SA MESAJ
-client.on("message", async msg => {
-  if (msg.content.toLowerCase() === 'sa') {
-    msg.reply('Aleyküm Selam Hoşgeldin');
-  
-  }
-})
 
 /////////
+client.on("message", async msg => {
+  
+  
+  let a = await db.fetch(`kufur_${msg.guild.id}`)
+    if (a == 'acik') {
+      const küfür = [
+        "yarak","mk", "amk", "aq", "orospu", "oruspu", "oç", "sikerim", "yarrak", "piç", "amq", "sik", "amcık", "çocu", "sex", "seks", "amına", "orospu çocuğu", "sg", "siktir git","31","ananın amına yarak"
+                  ]
+            if (küfür.some(word => msg.content.includes(word))) {
+          try {
+            if (!msg.member.hasPermission("MANAGE_GUILD")) {
+                  msg.delete();
+                          
+                    return msg.channel.send(`Kufur Etme !`).then(msg => msg.delete(10000));
+            }              
+                } catch(err) {
+                  console.log(err);
+                }
+              }
+          }
+          if (!a) return;
+          })
+
+
+
+
+//otorol
+client.on("guildMemberAdd", async member => {
+
+let rol = '727876039862386738'
+let kanal = '727874879621169217'
+member.roles.add(rol)
+  client.channels.cache.get(kanal).send(`:loudspeaker: :inbox_tray: Otomatik Rol Verildi Seninle **${member.guild.memberCount}** kişiyiz hoşgeldin **${member}**`)
+})
