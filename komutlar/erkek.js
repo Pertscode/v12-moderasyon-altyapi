@@ -5,7 +5,7 @@ exports.run = async(client, message, args) => {
    if(!message.member.roles.cache.has('YetkiliRolİD')) return message.channel.send('Bu komutu kullanabilmek için <@&YetkiliRolİD>Rolüne Sahıp Olmalısınız')
    let member = message.mentions.users.first() 
    if(!member) {
-       return message.channel.send('Bir kişi etiketlemelisin')
+       return message.channel.send('Bir Üye Etiketlemelisin Yavrum †')
    }
    let erkek = message.guild.roles.cache.find(s => s.name === 'Erkek')
    
@@ -15,31 +15,28 @@ exports.run = async(client, message, args) => {
 
    let kayıt = message.guild.member(member)
    let isim = args[1]
-   let yas = args[2]
+
 
    if(!isim) return message.channel.send('İsim belirtmelisin')
-   if(isNaN(yas)) return message.channel.send('Yaş belirtmelisin')
+  
 
-   kayıt.setNickname(`${isim} ・ ${yas}`)
+   kayıt.setNickname(`Nîght₴${isim}`)
   
    kayıt.roles.add(erkek)
   
    kayıt.roles.remove(kayıtsız)
   
    let embed = new Discord.MessageEmbed()
-   .setColor('BLUE')
-   .setTitle('Kayıt Başarılı')
-   .addField('Kayıt edilen kullanıcı',member)
-   .addField('Adı ;', isim)
-   .addField('Yaşı ;', yas)
-   .addField('Kayıt eden yetkili', message.author)
+   .setColor('RANDOM')
+   .setTitle('<a:tik2:712666264304222228> Kayıt işlemi Başarılı <a:tik2:712666264304222228>') 
+   .setDesripciton(`<a:tik2:712666264304222228> **Kayıt edilen kullanıcı:** ${member} <a:Nightta2:710009174490349578> \n <a:tik2:712666264304222228> **Kayıt Islemınde Verılen Rol:** <@&691057863556202526> <a:Nightta2:710009174490349578> \n <a:tik2:712666264304222228> ** Kayıt işleminde Alınan Rol: <@&712330085247746132> <a:Nightta2:710009174490349578> \n <a:tik2:712666264304222228> **Kayıt Edildikten Sonra İsim: ** Nîght₴_${isim} <a:Nightta2:710009174490349578> \n ** <a:tik2:712666264304222228> Kayıt İşlemini Yapan Yetkili :** ${message.author.username}`)
   message.channel.send(embed)
 }
 
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases:['e'],
+    aliases:[],
     permlevel: 0
 };
 
