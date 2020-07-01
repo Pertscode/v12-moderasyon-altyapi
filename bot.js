@@ -133,14 +133,37 @@ if(msg.content == 'tag')
 
 
 
+client.on("guildMemberAdd", member => { 
+  const emoji = client.emojis.get('710009174490349578');
+  const kanal = "712292800237928520";
+  let user = client.users.get(member.id);
+  require("moment-duration-format");
+    const kurulus = new Date().getTime() - user.createdAt.getTime();  
+  const embed = new Discord.Messagembed()
+ 
+  var kontrol;
+if (kurulus < 1296000000) kontrol = '  **__Bu Hesap Güvenilir Değil__**  '
+if (kurulus > 1296000000) kontrol = '   **__Bu Hesap Güvenilir Gözüküyor__**  '
+  moment.locale("tr");
+  let buse = client.channels.cache.get(kanal);
+buse.send(`
+${emoji} Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz.
 
-client.on("guildMemberAdd", member => {  
-  const kanal = "727556810499817576";
-client.channels.cache.get(kanal).send("**Hoşgeldin! <@" + member + "> Seninle __\`" + member.guild.memberCount + "\`__ Kişiyiz \n\n  Sunucuya Kayıt Olmak İçin <#727566210354380810> İsim Yaş Yazınız ! \n\n <@&727571240927100929> Kayıt Sorumlusu Rolündeki yetkililer sizinle ilgilenicektir  \n\n  Hesabın Oluşturulma Tarihi:** " + moment(member.user.createdAt).format("YYYY **__DD MMMM dddd (hh:mm:ss)__**"))
+${emoji} Müsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
 
+${emoji} <@&712391143819837502> seninle ilgilenicektir.
+
+${emoji} Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
+
+${emoji} ${kontrol} 
+
+${emoji} Tagımızı alarak Nîght₴ bize destek olabilirsin.`)
   
-});
+buse.send({
+  file: "https://media.discordapp.net/attachments/608711476219478045/660404777523347470/harley.gif"
+})
 
+});
 
 ///////////////şüpheli Hsap/////////////////
 ///////////////şüpheli Hsap/////////////////
@@ -159,3 +182,10 @@ client.on("guildMemberAdd", async (member) => {
     
       }
 });
+
+
+/////DM HG
+client.addListener("guildMemberAdd", async function(member) {
+  if (member.user.bot) return;
+  return member.user.send(`Sunucumuza Hg`)
+})
