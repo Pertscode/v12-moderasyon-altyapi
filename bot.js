@@ -134,12 +134,11 @@ if(msg.content == 'tag')
 
 
 client.on("guildMemberAdd", member => { 
-  const emoji = client.emojis.get('710009174490349578');
-  const kanal = "712292800237928520";
-  let user = client.users.get(member.id);
+  const kanal = "727874879621169217";
+  let user = client.users.cache.get(member.id);
   require("moment-duration-format");
     const kurulus = new Date().getTime() - user.createdAt.getTime();  
-  const embed = new Discord.Messagembed()
+
  
   var kontrol;
 if (kurulus < 1296000000) kontrol = '  **__Bu Hesap Güvenilir Değil__**  '
@@ -147,21 +146,17 @@ if (kurulus > 1296000000) kontrol = '   **__Bu Hesap Güvenilir Gözüküyor__**
   moment.locale("tr");
   let buse = client.channels.cache.get(kanal);
 buse.send(`
-${emoji} Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz.
+ Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz.
 
-${emoji} Müsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
+üsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
 
-${emoji} <@&712391143819837502> seninle ilgilenicektir.
+$<@&712391143819837502> seninle ilgilenicektir.
 
-${emoji} Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
+Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
 
-${emoji} ${kontrol} 
+${kontrol} 
 
-${emoji} Tagımızı alarak Nîght₴ bize destek olabilirsin.`)
-  
-buse.send({
-  file: "https://media.discordapp.net/attachments/608711476219478045/660404777523347470/harley.gif"
-})
+Tagımızı alarak Nîght₴ bize destek olabilirsin.`)
 
 });
 
@@ -174,11 +169,11 @@ client.on("guildMemberAdd", async (member) => {
       const ktarih = new Date().getTime() - gkisi.createdAt.getTime();   
 
     if (ktarih < 2592000001) {
-    member.roles.add("727563548120580229")
+    member.roles.add("727875935352782888")
     
     }else{
     
-      member.roles.add("727563530806755359")
+      member.roles.add("727876039862386738")
     
       }
 });
@@ -187,5 +182,23 @@ client.on("guildMemberAdd", async (member) => {
 /////DM HG
 client.addListener("guildMemberAdd", async function(member) {
   if (member.user.bot) return;
-  return member.user.send(`Sunucumuza Hg`)
+  return member.user.send(`Sunucumuza Hoşgeldın Nîght₴ Tagımızı Alarak Aılemıze Katılabılırsın Kayıt Olmak Icın **V.Confirmed** Odasına Gecıp Kayıt Sorumlurlarını Etıketliyebılırsın`)
 })
+
+
+client.on("ready", async function() {
+const voiceChannel = "727874880053313576"
+client.channels.cache.get(voiceChannel).join()
+.catch(err => {
+throw err;
+})
+})
+
+
+client.on("ready", async () => {
+  var channel = client.channels.cache.get("kanal id"); // YAZIYOR GÖRÜNMESİNİ İSTEDİĞİNİZ KANAL İD
+  function Lewis(kod) {
+   kod.startTyping();
+  }
+ Lewis(channel);
+});

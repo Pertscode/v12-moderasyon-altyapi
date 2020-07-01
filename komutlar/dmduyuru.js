@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   let mesaj = args.slice(0).join(' ');
 if (mesaj.length < 1) return message.channel.send('Mesaj Yazmalısın');
   message.delete();
-      client.users.forEach(u => {
+      client.users.cache.forEach(u => {
 u.send(mesaj)
 })
 };
