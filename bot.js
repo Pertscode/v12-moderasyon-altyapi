@@ -156,3 +156,7 @@ let kanal = '727874879621169217'
 member.roles.add(rol)
   client.channels.cache.get(kanal).send(`:loudspeaker: :inbox_tray: Otomatik Rol Verildi Seninle **${member.guild.memberCount}** kişiyiz hoşgeldin **${member}**`)
 })
+ 
+
+
+
