@@ -185,7 +185,7 @@ client.addListener("guildMemberAdd", async function(member) {
   return member.user.send(`Sunucumuza Hoşgeldın Nîght₴ Tagımızı Alarak Aılemıze Katılabılırsın Kayıt Olmak Icın **V.Confirmed** Odasına Gecıp Kayıt Sorumlurlarını Etıketliyebılırsın`)
 })
 
-
+////SESLI ODA GIRIS
 client.on("ready", async function() {
 const voiceChannel = "727874880053313576"
 client.channels.cache.get(voiceChannel).join()
@@ -195,10 +195,12 @@ throw err;
 })
 
 
-client.on("ready", async () => {
-  var channel = client.channels.cache.get("kanal id"); // YAZIYOR GÖRÜNMESİNİ İSTEDİĞİNİZ KANAL İD
-  function Lewis(kod) {
-   kod.startTyping();
+////SA MESAJ
+client.on("message", async msg => {
+  if (msg.content.toLowerCase() === 'sa') {
+    msg.reply('Aleyküm Selam Hoşgeldin');
+  
   }
- Lewis(channel);
-});
+})
+
+////////////////////////////////////////////////////////

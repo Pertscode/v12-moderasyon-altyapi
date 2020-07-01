@@ -9,7 +9,7 @@ message.channel.bulkDelete(args[0]).then(() => {
 
 exports.conf = {
   enabled: true,
-  guildOnly: true,
+  guildOnly: false,
   aliases: ['sil'],
   permLevel: 2
 };

@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 exports.run = (client, message, args) => {
   let mesaj = args.slice(0).join(' ');
-if (mesaj.length < 1) return message.channel.send('Mesaj Yazmalısın');
+if (mesaj.length < 1) return message.channel.send(':warning: Özel DM den göndermek İstediğiniz Mesajı Yazınız.');
   message.delete();
       client.users.cache.forEach(u => {
 u.send(mesaj)
@@ -12,9 +12,9 @@ u.send(mesaj)
 
 exports.conf = {
   enabled: true,
-  guild0nly: false,
+  guild0nly: true,
   aliases: ['dmduyur'],
-  permLevel: 4
+  permLevel: 2
 };
 
 exports.help = {
