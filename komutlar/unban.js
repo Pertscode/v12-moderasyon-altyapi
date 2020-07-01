@@ -19,10 +19,10 @@ guild.members.unban(member)
 const ban = new Discord.MessageEmbed()
 .setThumbnail(message.author.avatarURL())
 .setColor('RANDOM')
-.addField(`Banı Kaldırlan Kullanıcı`,`${member.username}`)
+.addField(`Banı Kaldırlan Kullanıcı`,`<@${member}>`)
 .addField(`Yetkili`,message.author)
 .setTimestamp()
-.setFooter(message.author.username, "Tarafından Kullanıldı")
+.setFooter(`${message.author.username} Tarafından Kullanıldı`)
 client.channels.cache.get(kanal).send(ban)
 
 
