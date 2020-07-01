@@ -134,7 +134,7 @@ if(msg.content == 'tag')
 
 
 client.on("guildMemberAdd", member => { 
-  const kanal = "727874879621169217";
+  const kanal = "712292800237928520";
   let user = client.users.cache.get(member.id);
   require("moment-duration-format");
     const kurulus = new Date().getTime() - user.createdAt.getTime();  
@@ -165,18 +165,12 @@ Tagımızı alarak Nîght₴ bize destek olabilirsin.`)
 
 
 client.on("guildMemberAdd", async (member) => {
-    let gkisi = client.users.cache.get(member.id);
-      const ktarih = new Date().getTime() - gkisi.createdAt.getTime();   
-
-    if (ktarih < 2592000001) {
-    member.roles.add("727875935352782888")
+  
     
-    }else{
+      member.roles.add("712330085247746132")
     
-      member.roles.add("727876039862386738")
-    
-      }
-});
+      
+})
 
 
 /////DM HG
@@ -187,7 +181,7 @@ client.addListener("guildMemberAdd", async function(member) {
 
 ////SESLI ODA GIRIS
 client.on("ready", async function() {
-const voiceChannel = "727874880053313576"
+const voiceChannel = "703336681205399582"
 client.channels.cache.get(voiceChannel).join()
 .catch(err => {
 throw err;
