@@ -146,11 +146,11 @@ if (kurulus > 1296000000) kontrol = '   **__Bu Hesap Güvenilir Gözüküyor__**
   moment.locale("tr");
   let buse = client.channels.cache.get(kanal);
 buse.send(`
- Hoşgeldin! ${member} Seninle Birlikte ${member.guild.memberCount} Kişiyiz.
+ Hoşgeldin! ${member} Seninle Birlikte \`${member.guild.memberCount}\` Kişiyiz.
 
-üsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
+Müsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
 
-$<@&712391143819837502> seninle ilgilenicektir.
+<@&727875883939135508> seninle ilgilenicektir.
 
 Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
 
@@ -203,4 +203,4 @@ client.on("message", async msg => {
   }
 })
 
-////////////////////////////////////////////////////////
+/////////
