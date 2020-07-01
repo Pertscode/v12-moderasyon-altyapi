@@ -141,18 +141,18 @@ client.on("guildMemberAdd", member => {
 
  
   var kontrol;
-if (kurulus < 1296000000) kontrol = '  **__Bu Hesap Güvenilir Değil__**  '
-if (kurulus > 1296000000) kontrol = '   **__Bu Hesap Güvenilir Gözüküyor__**  '
+if (kurulus < 1296000000) kontrol = '  **__Bu Hesap Güvenilir Değil__** <a:unlem:691212268787990578> '
+if (kurulus > 1296000000) kontrol = '   **__Bu Hesap Güvenilir Gözüküyor__** <a:tik2:712666264304222228>  '
   moment.locale("tr");
   let buse = client.channels.cache.get(kanal);
 buse.send(`
- Hoşgeldin! ${member} Seninle Birlikte \`${member.guild.memberCount}\` Kişiyiz.
+  <a:Nightta2:710009174490349578> Hoşgeldin! ${member} Seninle Birlikte \`${member.guild.memberCount}\` Kişiyiz.
 
-Müsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
+<a:Nightta2:710009174490349578> Müsait olduğunda ✞ ses teyit  Odalarından Birine Geçip Kaydını Yaptırabilirsin..
 
-<@&727875883939135508> seninle ilgilenicektir.
+<a:Nightta2:710009174490349578> <@&727875883939135508> seninle ilgilenicektir.
 
-Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
+<a:Nightta2:710009174490349578> Hesabın Oluşturulma Tarihi: ${moment(member.user.createdAt).format("** YYYY __DD MMMM dddd (hh:mm:ss)__**")}
 
 ${kontrol} 
 
