@@ -6,7 +6,7 @@ module.exports = client => {
   //online = çevrimiçi
   console.log(`${client.user.id}                                                                                                                                                                     `)
   //client.user.setActivity(`${prefix}yardım | ${client.guilds.size} sunucu | ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} Kullanıcıyı`, { type: "LISTENING"});
-client.user.setActivity(` Night Krallgını`, { type: "WATCHING"});  
+client.user.setActivity(`Kobs Guard v12`, { type: "WATCHING"});  
 //LISTENING = DİNLİYOR
   //WATCHING = İZLİYOR
   //PLAYING = OYNUYOR 
