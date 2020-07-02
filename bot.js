@@ -148,14 +148,6 @@ client.on("message", async msg => {
 
 
 
-//otorol
-client.on("guildMemberAdd", async member => {
 
-let rol = '727876039862386738'
-let kanal = '727874879621169217'
-member.roles.add(rol)
-  client.channels.cache.get(kanal).send(`:loudspeaker: :inbox_tray: Otomatik Rol Verildi Seninle **${member.guild.memberCount}** kişiyiz hoşgeldin **${member}**`)
-})
- 
 
 
