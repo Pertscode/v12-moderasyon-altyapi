@@ -20,6 +20,6 @@ exports.conf = {
 
 exports.help = {
   name: 'ping',
-  description: 'Otorol sistemini ayarlamaya yarar.',
-  usage: '-otorol-ayarla @rol #kanal'
+  description: 'Ping(Bunuda Almayında)',
+  usage: 'ping'
 }; 
