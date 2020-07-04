@@ -1,23 +1,22 @@
-const Discord = require('discord.js');
-exports.run = function(client, message, args) {
+const Discord = require('discord.js')
+
+exports.run = async(client, message) => {
   
-
-const embed = new Discord.MessageEmbed()
-   .setColor("RANDOM")            
-  .setTitle(`${message.guild.name} Adlı Sunucudaki Premium Kodlar!`)
-  .setDescription(`\`Koruma\` **__JavaScript__**  İçinde Bırbıdınden Guzel Ucretsız Kodlar Bulunmakda`)
-  .setDescription(`\`7 İnvite\` **__JavaScript++__** Yapdıgın Inıvte Deger Kodlar Mevcuttur`)
-  .setDescription(`\`10 İnvite\`  **__Altyapı__** Bot Yapmakda Zorlanıyorsan 10 İnvite Yaparak Altyapıları Kullanabılrısın`)
-  message.channel.send(embed)
+    const y = new Discord.MessageEmbed()
+    .setColor('RED')
+    .addField('**Koruma**','`!kanal-koruma aç/kapat`,`!rol-koruma aç/kapat`,`!reklam-engelle aç/kapat`,`!küfür-engel aç/kapat`')
+    .addField('**Komutlar**','`!ban`,`!unban`,`!sohbet aç`,`!sohbet kapat`,`!sil`,`!istatistik`,`!ping`,`!avatar`')
+    .setFooter(`${client.user.username}`, client.user.avatarURL)
+    .setThumbnail('https://cdn.discordapp.com/attachments/727202608133046415/727205052808298546/Kobs_server.png') 
+    return message.channel.send(y)
 };
-
 exports.conf = {
-  enabled: true,
-  guildOnly: true,
-  aliases: ['yardım','help'],
-  permLevel: 0
+ enabled: true,
+ guildOnly: false,
+  aliases: ['y'],
+ permLevel: 0
 };
 
 exports.help = {
-  name: 'yardım',
+ name: 'yardım'
 };
