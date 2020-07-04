@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
 let member = message.mentions.users.first()
 let sebep = args.slice(1).join(" ")
 let guild = message.guild;
-let kanal = '727874879621169217'
+let kanal = '728875735120347179'
 
 if(!member) return message.channel.send("Bir Üye Etıketle")
 
