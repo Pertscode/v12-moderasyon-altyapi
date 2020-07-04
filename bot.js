@@ -145,7 +145,74 @@ client.on("message", async msg => {
           if (!a) return;
           })
 
+///reklamengel
 
+client.on("message", async message => {
+  
+  const lus = await db.fetch(`reklamengel_${message.guild.id}`)
+  if (lus) {
+    const reklamengel = ["discord.app", "discord.gg", ".party", ".com", ".az", ".net", ".io", ".gg", ".me", "https", "http", ".com.tr", ".org", ".tr", ".gl", "glicht.me/", ".rf.gd", ".biz", "www.", "www"];
+    if (reklamengel.some(word => message.content.toLowerCase().includes(word))) {
+      try {
+        if (!message.member.permissions.has('KICK_MEMBERS')) {
+          message.delete();
+          
+          return message.reply('Hey Dur! Bu Sunucuda Reklamı Engelliyorum').then(message => message.delete(3000));
+          
+        }
+      } catch(err) {
+        console.log(err);
+    }
+  }
+}
+if (!lus) return;
+});
+client.on("messageUpdate", async message => {
+  
+  const lus = await db.fetch(`reklamengel_${message.guild.id}`)
+  if (lus) {
+    const reklamengel = ["discord.app", "discord.gg", ".party", ".com", ".az", ".net", ".io", ".gg", ".me", "https", "http", ".com.tr", ".org", ".tr", ".gl", "glicht.me/", ".rf.gd", ".biz", "www.", "www"];
+    if (reklamengel.some(word => message.content.toLowerCase().includes(word))) {
+      try {
+        if (!message.member.permissions.has('KICK_MEMBERS')) {
+          message.delete();
+          
+          return message.reply('Hey Dur! Bu Sunucuda Reklamı Engelliyorum').then(message => message.delete(3000));
+          
+        }
+      } catch(err) {
+        console.log(err);
+    }
+  }
+}
+if (!lus) return;
+});
+
+
+
+/////Rol Koruma
+
+client.on("roleDelete", async role => {
+  let kanal = await db.fetch(`rolk_${role.guild.id}`);
+  if (!kanal) return;
+  const entry = await role.guild
+    .fetchAuditLogs({ type: "ROLE_DELETE" })
+    .then(audit => audit.entries.first());
+  if (entry.executor.id == client.user.id) return;
+  if (entry.executor.id == role.guild.owner.id) return;
+  if(!entry.executor.hasPermission('ROLE_DELETE')) {
+      role.guild.roles.create({
+    name: role.name,
+    color: role.hexColor,
+    permissions: role.permissions
+  });
+   let embed = new Discord.MessageEmbed()
+   .setColor('0x36393E')
+   .setTitle(`Bir rol silindi !`)
+   .setDescription(`Silinen rol adı ${role.name}, Rol koruma sistemi açık olduğu için rol geri oluşturuldu!`)
+   client.channels.cache.get(kanal).send(embed)
+  }
+});
 
 
 
