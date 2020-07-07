@@ -213,7 +213,6 @@ client.on("roleDelete", async role => {
    client.channels.cache.get(kanal).send(embed)
   }
 });
-
 //KanalKoruma
 
 client.on("channelDelete", async function(channel) {
