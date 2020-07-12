@@ -205,6 +205,7 @@ client.on("roleDelete", async role => {
   .setTitle('Rol Koruma')
     .addField('Silinen Rol : ', role.name + ' (ID :'+role.id+')')
     .setTimestamp();
+mp();
 
   await role.guild.members
     .get(yetkili.id)
@@ -220,14 +221,13 @@ client.on("roleDelete", async role => {
     if (kanal) await kanal.send(embed);
   }, 2000);
   role.guild.createRole({
-permissions:role.permissions,
-name:role.name,
-    color:role.color,
-position:role.position,
-mentionable:role.mentionable
-
-})
-})
+    permissions: role.permissions,
+    name: role.name,
+    color: role.color,
+    position: role.position,
+    mentionable: role.mentionable
+  });
+});
 
 //KanalKoruma
 
