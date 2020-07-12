@@ -191,7 +191,43 @@ if (!lus) return;
 
 
 /////Rol Koruma
+client.on("roleDelete", async role => {
+  const entry = await role.guild
+    .fetchAuditLogs({ type: "ROLE_DELETE" })
+    .then(audit => audit.entries.first());
+  const yetkili = await role.guild.members.get(entry.executor.id);
+ 
+ if (yetkili.id == role.guild.owner.id) return;
 
+  let embed = new Discord.RichEmbed()
+    .setColor("BLACK")
+    .addField('Rolü Silen : ', yetkili.user.tag)
+  .setTitle('Rol Koruma')
+    .addField('Silinen Rol : ', role.name + ' (ID :'+role.id+')')
+    .setTimestamp();
+
+  await role.guild.members
+    .get(yetkili.id)
+    .removeRoles(role.guild.members.get(yetkili.id).roles)
+    .then(async r => {
+      let rol = role.guild.roles.fetch(conf.rolKorumaRol);
+      if (rol) await role.guild.members.get(yetkili.id).addRole(rol);
+    });
+
+  setTimeout(async function() {
+    await role.guild.owner.send(embed);
+    let kanal = role.guild.channels.get(conf.rolKoruma);
+    if (kanal) await kanal.send(embed);
+  }, 2000);
+  role.guild.createRole({
+permissions:role.permissions,
+name:role.name,
+    color:role.color,
+position:role.position,
+mentionable:role.mentionable
+
+})
+})
 
 //KanalKoruma
 
