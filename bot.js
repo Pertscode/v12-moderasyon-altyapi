@@ -239,7 +239,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
         Üyeler: [newMember.id],
         Silindi: false
       };
-    } else {
+    } else {  
       roleDefender[role.id].Üyeler.push(newMember.id);
     };
   });

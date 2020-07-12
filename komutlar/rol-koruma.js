@@ -1,16 +1,6 @@
 const Discord = require('discord.js')
 const db = require('quick.db');
-module.exports = {
-name:"rol-koruma",
-enname:"role-guard",
-description:"Sunucuda rol korumasını açarsınız.",
-endesc:"Server role guard on",
-aliases:["rolkoruma"],
-usage:"rol-koruma <#kanal> <@rol>",
-permLevel: 3,
-kategori:"sunucu",
-category:"server",
-execute(client, message, args) {
+exports.run = (client, message, args) => {
   
    if(args[0] === "kapat") {
       db.delete(`rolKoruma_${message.guild.id}`)
@@ -38,5 +28,17 @@ db.set(`cezaRol_${message.guild.id}`, role2.id)
   .setDescription('<a:okey:679854253501710383> Başarılı bir şekilde rol koruma log kanalı' + channel + ' olarak ayarlandı.\n<a:okey:679854253501710383> ' + role2 + ' Adlı rol ceza rolü olarak ayarlandı.')
   message.channel.send(embed)
   }
-},
+}
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  kategori: "sohbet",
+  permLevel: 3
+};
+
+exports.help = {
+  name: "rol-koruma",
+  description: "Rollerinizi korumanızı sağlar.",
+  usage: "kapat"
 };
