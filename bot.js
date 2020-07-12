@@ -191,44 +191,60 @@ if (!lus) return;
 
 
 /////Rol Koruma
-client.on("roleDelete", async role => {
-  const entry = await role.guild
-    .fetchAuditLogs({ type: "ROLE_DELETE" })
-    .then(audit => audit.entries.first());
-  const yetkili = await role.guild.members.get(entry.executor.id);
- 
- if (yetkili.id == role.guild.owner.id) return;
+client.on("roleDelete", async (role) => {
+  const entry = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first());
+  let yetkili = entry.executor;
+  let cezaliRolu = db.fetch(`cezaRol_${role.guild.id}`)
+  let logKanali = db.fetch(`rolKoruma_${role.guild.id}`)
+  if(!db.has(`rolKoruma_${role.guild.id}`) !== true) {
+  await role.guild.member(yetkili).setRoles([cezaliRolu]);
+  let yeniRol = await role.guild.roles.create({ name: role.name, color: role.color, hoist: role.hoist, position: role.position, permissions: role.permissions, mentionable: role.mentionable });
+  const uyar =new Discord.MessageEmbed()
+    .setTimestamp()
+    .setColor('RANDOM')
+    .setDescription(`${yetkili.tag} adlı kişi bir rol sildi ve cezalıya atıldı!\nRolü tekrar açtım ve üyelerine vermeye başladım!`)
+  role.guild.channels.cache.get(logKanali).send(uyar);
+  const uyar2 = new Discord.MessageEmbed()
+  .setColor('RANDOM')
+  .setDescription(`${role.name} adlı rol verilmeye başlanıyor!`)
+  let mesaj = await role.guild.channels.cache.get(logKanali).send(uyar2);
+  setTimeout(() => {
+    let veri = roleDefender[role.id];
+    let index = 0;
+    setInterval(() => {
+      veri = roleDefender[role.id];
+      if (index >= veri.Üyeler.length){
+        delete roleDefender[role.id];
+        clearInterval(this);
+      };
+      let kisi = role.guild.members.get(veri.Üyeler[index]);
+      try { kisi.roles.add(yeniRol, "Koruma meydana geldi"); } catch(err) { };
+      const uyar3= new Discord.MessageEmbed()
+      .setcolor('RANDOM')
+      .setDescription(`${kisi.user.tag} adlı üyeye ${yeniRol.name} adlı rol verildi!`)
+      mesaj.edit();
+      index++;
+    }, 2000);
+  }, 5000);
+  }
+});
 
-  let embed = new Discord.RichEmbed()
-    .setColor("BLACK")
-    .addField('Rolü Silen : ', yetkili.user.tag)
-  .setTitle('Rol Koruma')
-    .addField('Silinen Rol : ', role.name + ' (ID :'+role.id+')')
-    .setTimestamp();
-
-  await role.guild.members
-    .get(yetkili.id)
-    .removeRoles(role.guild.members.get(yetkili.id).roles)
-    .then(async r => {
-      let rol = role.guild.roles.fetch(conf.rolKorumaRol);
-      if (rol) await role.guild.members.get(yetkili.id).addRole(rol);
-    });
-
-  setTimeout(async function() {
-    await role.guild.owner.send(embed);
-    let kanal = role.guild.channels.get(conf.rolKoruma);
-    if (kanal) await kanal.send(embed);
-  }, 2000);
-  role.guild.createRole({
-permissions:role.permissions,
-name:role.name,
-    color:role.color,
-position:role.position,
-mentionable:role.mentionable
-
-})
-})
-
+const roleDefender = {};
+client.on("guildMemberUpdate", async (oldMember, newMember) => {
+  oldMember.roles.cache.each(async role => {
+    if (newMember.roles.cache.some(r => r.id == role.id)) return;
+    if (!roleDefender[role.id]) {
+      roleDefender[role.id] = {
+        Rol: role,
+        Üyeler: [newMember.id],
+        Silindi: false
+      };
+    } else {
+      roleDefender[role.id].Üyeler.push(newMember.id);
+    };
+  });
+});
+  
 //KanalKoruma
 
 client.on("channelDelete", async function(channel) {
