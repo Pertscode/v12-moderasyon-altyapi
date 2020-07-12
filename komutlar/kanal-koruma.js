@@ -37,3 +37,4 @@ exports.conf = {
 exports.help = {
   name: 'kanal-koruma'
 }; 
+//heh geldim nedir sorun abe

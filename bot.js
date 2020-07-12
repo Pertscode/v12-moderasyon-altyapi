@@ -246,7 +246,7 @@ let channelp = channel.parentID;
     );
   });
   }
-})
+})//heh geldim nedir sorun abe
 
 
 
