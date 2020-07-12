@@ -16,11 +16,11 @@ exports.run = (client, message, args) => {
   .setColor('RANDOM')
   .setDescription('<a:no:679854277711233037> Lütfen bir kanal belirt.')
     return message.channel.send(uyari)
-  }
+  
   db.set(`rolKoruma_${message.guild.id}`,channel.id)
   let role = args[1]
 if (role.length < 1) return message.reply('<a:no:679854277711233037> Ceza rolü için bir rol seçmelisin.');
-let role2 = message.guild.roles.find(r => r.name === `${role}`);
+let role2 = message.guild.roles.cache.find(r => r.name === `${role}`);
 if (!role2) return message.reply(`<a:no:679854277711233037> ${role} Rolünü bulamıyorum.`);
 db.set(`cezaRol_${message.guild.id}`, role2.id)
   const embed = new Discord.MessageEmbed()
@@ -28,6 +28,7 @@ db.set(`cezaRol_${message.guild.id}`, role2.id)
   .setDescription('<a:okey:679854253501710383> Başarılı bir şekilde rol koruma log kanalı' + channel + ' olarak ayarlandı.\n<a:okey:679854253501710383> ' + role2 + ' Adlı rol ceza rolü olarak ayarlandı.')
   message.channel.send(embed)
   }
+}
 }
 exports.conf = {
   enabled: true,
