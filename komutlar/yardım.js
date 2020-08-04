@@ -4,7 +4,7 @@ exports.run = async(client, message) => {
   
     const y = new Discord.MessageEmbed()
     .setColor('RED')
-    .addField('**Koruma**','`!kanal-koruma aç/kapat`,`!rol-koruma aç/kapat`,`!reklam-engelle aç/kapat`,`!küfür-engel aç/kapat`')
+    .addField('**Koruma**','`!kanal-koruma aç/kapat`,`  !reklam-engelle aç/kapat`,`!küfür-engel aç/kapat`')
     .addField('**Komutlar**','`!ban`,`!unban`,`!sohbet aç`,`!sohbet kapat`,`!sil`,`!istatistik`,`!ping`,`!avatar`')
     .setFooter(`${client.user.username}`, client.user.avatarURL)
     .setThumbnail('https://cdn.discordapp.com/attachments/727202608133046415/727205052808298546/Kobs_server.png') 

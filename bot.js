@@ -191,60 +191,23 @@ if (!lus) return;
 
 
 /////Rol Koruma
-client.on("roleDelete", async (role) => {
-  const entry = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first());
-  let yetkili = entry.executor;
-  let cezaliRolu = db.fetch(`cezaRol_${role.guild.id}`)
-  let logKanali = db.fetch(`rolKoruma_${role.guild.id}`)
-  if(!db.has(`rolKoruma_${role.guild.id}`) !== true) {
-  await role.guild.member(yetkili).setRoles([cezaliRolu]);
-  let yeniRol = await role.guild.roles.create({ name: role.name, color: role.color, hoist: role.hoist, position: role.position, permissions: role.permissions, mentionable: role.mentionable });
-  const uyar =new Discord.MessageEmbed()
-    .setTimestamp()
-    .setColor('RANDOM')
-    .setDescription(`${yetkili.tag} adlı kişi bir rol sildi ve cezalıya atıldı!\nRolü tekrar açtım ve üyelerine vermeye başladım!`)
-  role.guild.channels.cache.get(logKanali).send(uyar);
-  const uyar2 = new Discord.MessageEmbed()
-  .setColor('RANDOM')
-  .setDescription(`${role.name} adlı rol verilmeye başlanıyor!`)
-  let mesaj = await role.guild.channels.cache.get(logKanali).send(uyar2);
-  setTimeout(() => {
-    let veri = roleDefender[role.id];
-    let index = 0;
-    setInterval(() => {
-      veri = roleDefender[role.id];
-      if (index >= veri.Üyeler.length){
-        delete roleDefender[role.id];
-        clearInterval(this);
-      };
-      let kisi = role.guild.members.get(veri.Üyeler[index]);
-      try { kisi.roles.add(yeniRol, "Koruma meydana geldi"); } catch(err) { };
-      const uyar3= new Discord.MessageEmbed()
-      .setcolor('RANDOM')
-      .setDescription(`${kisi.user.tag} adlı üyeye ${yeniRol.name} adlı rol verildi!`)
-      mesaj.edit();
-      index++;
-    }, 2000);
-  }, 5000);
-  }
-});
-
-const roleDefender = {};
-client.on("guildMemberUpdate", async (oldMember, newMember) => {
-  oldMember.roles.cache.each(async role => {
-    if (newMember.roles.cache.some(r => r.id == role.id)) return;
-    if (!roleDefender[role.id]) {
-      roleDefender[role.id] = {
-        Rol: role,
-        Üyeler: [newMember.id],
-        Silindi: false
-      };
-    } else {  
-      roleDefender[role.id].Üyeler.push(newMember.id);
-    };
-  });
-});
-  
+client.on("roleDelete", async role => {
+         const entry = await role.guild.fetchAuditLogs({ type: "ROLE_DELETE" }).then(audit => audit.entries.first());
+    if (entry.executor.id == client.user.id) return;
+  role.guild.roles.create({ data: {
+          name: role.name,
+          color: role.color,
+          hoist: role.hoist,
+          permissions: role.permissions,
+          mentionable: role.mentionable,
+          position: role.position
+}, reason: 'Silinen Rol Açıldı.'})
+})
+client.on("roleCreate", async role => {
+       const entry = await role.guild.fetchAuditLogs({ type: "ROLE_CREATE" }).then(audit => audit.entries.first());
+    if (entry.executor.id == client.user.id) return;
+  role.delete()
+}) 
 //KanalKoruma
 
 client.on("channelDelete", async function(channel) {
