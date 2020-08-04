@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
 
 let member = args[0]
 let guild = message.guild;
-let kanal = '728875735120347179'
+let kanal = 'Log KanalİD'//Log Kanal id Yazın
 
 if(!member) return message.channel.send("Bir İd Gırmelısın")
 
