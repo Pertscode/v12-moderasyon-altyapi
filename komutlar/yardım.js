@@ -6,7 +6,7 @@ exports.run = function(client, message) {
 
 const yardım = new Discord.MessageEmbed()
 .setColor('GREEN')
-.setAuthor(`Kob's Bot`)
+.setAuthor(`ukqzn YouTube Guard Bot`)
 .setDescription(`
 
 
@@ -22,7 +22,7 @@ const yardım = new Discord.MessageEmbed()
 :white_small_square: **=**  \`!avatar\`:  **Avatarınızı Atar**
 
 `)
-.setImage("https://cdn.discordapp.com/attachments/729334114989375508/731237846173876294/OgunSert_Kobs.png")
+.setImage("https://cdn.discordapp.com/attachments/740871896614043669/748878433840398367/Baslksz-1.png")
 .setThumbnail(message.author.avatarURL())
 message.channel.send(yardım)
 
