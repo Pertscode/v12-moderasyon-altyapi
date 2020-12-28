@@ -6,23 +6,23 @@ exports.run = function(client, message) {
 
 const yardım = new Discord.MessageEmbed()
 .setColor('GREEN')
-.setAuthor(`ssjsjskdkj`)
+.setAuthor(`GUARD BOT`)
 .setDescription(`
 
 
-:white_small_square: **=**  \`g!kanal-koruma\` : **Kanal Koruma Aç/Kapat**
-:white_small_square: **=**  \`g!küfür-engel\`:  **Küfür Engel Aç/Kapat**
-:white_small_square: **=**  \`g!reklam-engel\` :  **Reklam Engel Aç/Kapat**
-:white_small_square: **=**  \`g!sohbet aç-kapat\` :  **Sohbeti Açıp Kapatırsınız**
-:white_small_square: **=**  \`g!ban\`: **Belirttiğiniz Kişiyi Sunucudan Banlarsınız**
-:white_small_square: **=**  \`g!unban\`:  **Belirttiğiniz Kişinin Banını Kaldırırsınız**
-:white_small_square: **=**  \`g!istatistik\`:  **Botun İstatistiklerini Atar**
-:white_small_square: **=**  \`g!temizle\`:  **Belirttiğiniz Sayıda Mesajı Siler**
-:white_small_square: **=**  \`g!ping\`:  **Pinginizi Ölçüp Atar**
-:white_small_square: **=**  \`g!avatar\`:  **Avatarınızı Atar**
+:white_small_square: **=**  \`x!kanal-koruma\` : **Kanal Koruma Aç/Kapat**
+:white_small_square: **=**  \`x!küfür-engel\`:  **Küfür Engel Aç/Kapat**
+:white_small_square: **=**  \`x!reklam-engel\` :  **Reklam Engel Aç/Kapat**
+:white_small_square: **=**  \`x!sohbet aç-kapat\` :  **Sohbeti Açıp Kapatırsınız**
+:white_small_square: **=**  \`x!ban\`: **Belirttiğiniz Kişiyi Sunucudan Banlarsınız**
+:white_small_square: **=**  \`x!unban\`:  **Belirttiğiniz Kişinin Banını Kaldırırsınız**
+:white_small_square: **=**  \`x!istatistik\`:  **Botun İstatistiklerini Atar**
+:white_small_square: **=**  \`x!temizle\`:  **Belirttiğiniz Sayıda Mesajı Siler**
+:white_small_square: **=**  \`x!ping\`:  **Pinginizi Ölçüp Atar**
+:white_small_square: **=**  \`x!avatar\`:  **Avatarınızı Atar**
 
 `)
-.setImage("https://media.discordapp.net/attachments/729708966292226069/765614032664395806/cl.PNG?width=259&height=265")
+.setImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9fWSqAYpItpZ2azF_QOK6Ew43ty2dq9RlA&usqp=CAU")
 .setThumbnail(message.author.avatarURL())
 message.channel.send(yardım)
 

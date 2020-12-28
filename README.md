@@ -1,0 +1,1 @@
+Bu Altyapıyı Kendim Kodlamadım! Youtube de Felan Paylaşabilirsiniz.
