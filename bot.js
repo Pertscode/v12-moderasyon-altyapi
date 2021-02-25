@@ -128,14 +128,14 @@ client.on("message", async msg => {
   let a = await db.fetch(`kufur_${msg.guild.id}`)
     if (a == 'acik') {
       const küfür = [
-        "yarak","mk", "amk", "aq", "orospu", "oruspu", "oç", "sikerim", "yarrak", "piç", "amq", "sik", "amcık", "çocu", "sex", "seks", "amına", "orospu çocuğu", "sg", "siktir git","31","ananın amına yarak"
+        "yarak","mk", "amk", "aq", "orospu", "oruspu", "oç", "sikerim", "yarrak", "piç", "amq", "sik", "amcık", "çocu", "sex", "seks", "amına", "orospu çocuğu", "sg", "siktir git","31","ananın amına yarak","bok
                   ]
             if (küfür.some(word => msg.content.includes(word))) {
           try {
             if (!msg.member.hasPermission("MANAGE_GUILD")) {
                   msg.delete();
                           
-                    return msg.channel.send(`Kufur Etme !`).then(msg => msg.delete(10000));
+                    return msg.channel.send(`Arabesk Sunucusunda Küfür Yasaktır !`).then(msg => msg.delete(10000));
             }              
                 } catch(err) {
                   console.log(err);
@@ -157,7 +157,7 @@ client.on("message", async message => {
         if (!message.member.permissions.has('KICK_MEMBERS')) {
           message.delete();
           
-          return message.reply('Hey Dur! Bu Sunucuda Reklamı Engelliyorum').then(message => message.delete(3000));
+          return message.reply('Arabesk Sunucusunda Reklam Yasaktır').then(message => message.delete(3000));
           
         }
       } catch(err) {
@@ -177,7 +177,7 @@ client.on("messageUpdate", async message => {
         if (!message.member.permissions.has('KICK_MEMBERS')) {
           message.delete();
           
-          return message.reply('Hey Dur! Bu Sunucuda Reklamı Engelliyorum').then(message => message.delete(3000));
+          return message.reply('Arabesk Sunucusunda Reklam Yasaktır').then(message => message.delete(3000));
           
         }
       } catch(err) {
