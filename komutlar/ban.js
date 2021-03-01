@@ -35,7 +35,7 @@ exports.conf = {
   permLevel: 0 //komutun yetkisini ayarlar / bu komut için hiç bir yeetkiye gerek yok bu yüzden 0
 };
 exports.help = {
-  name: 'ban', //komutun ismidir. / prefix + paralarım şeklinde çalışır.
+  name: 'banlaaa', //komutun ismidir. / prefix + paralarım şeklinde çalışır.
   description: 'Kullanıcıya Ban Atar', //komutun açıklamasıdır çok önemi yok!
   usage: '!ban @user <sebep>' //komutun kullanım şeklidir çok önemi yok!
 };

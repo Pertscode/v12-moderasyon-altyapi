@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
   
 const istatistikler = new Discord.MessageEmbed()
   .addField(`:scroll: »  Pingim` ,`${client.ws.ping}ms`,true)
-  .addField(`:incoming_envelope: » Yapımcım` ,`<@648159344663461908>`,true)
+  .addField(`:incoming_envelope: » Yapımcım` ,`<@752762692993024072>`,true)
   .addField(`:label: » Node.js`, `${process.version}`, true)
  .addField(`:bar_chart: » Kanal Sayısı`, `${client.channels.cache.size  }`, true)
  .addField(`:postbox: » Kullanıcı Sayısı`, `${client.users.cache.size}`, true)
