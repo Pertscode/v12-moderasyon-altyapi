@@ -11,9 +11,6 @@ const istatistikler = new Discord.MessageEmbed()
  .addField(`:bar_chart: » Kanal Sayısı`, `${client.channels.cache.size  }`, true)
  .addField(`:postbox: » Kullanıcı Sayısı`, `${client.users.cache.size}`, true)
  .addField(`:envelope: » Sunucu Sayısı`, `${client.guilds.cache.size}`, true)
- .addField(`» Linkler`, `[Destek Sunucusu](https://discord.gg/n5r8SnGf7W) | [Youtube](https://www.youtube.com/channel/UCvun6SrmcOMuJCW8bSEd6cA`, true)
-  message.channel.send(istatistikler)
-  
   
 }
   
