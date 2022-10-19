@@ -1,16 +1,16 @@
-const express = require("express");
-const app = express();
-const http = require("http");
+const express = require("express");//Perts Code
+const app = express();//Perts Code
+const http = require("http");//Perts Code
 app.get("/", (request, response) => {
   console.log(
     `Az Önce Bot Ping yedi, Sorun önemli değil merak etme. Hatayı düzelttik.`
   );
-  response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
+  response.sendStatus(200);//Perts Code
+});//Perts Code
+app.listen(process.env.PORT);//Perts Code
+setInterval(() => {//Perts Code
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
+}, 280000);//Perts Code
 const Discord = require("discord.js");
 const db = require('quick.db')
 const client = new Discord.Client();
@@ -30,7 +30,7 @@ const log = message => {
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
-  if (err) console.error(err);
+  if (err) console.error(err);//Perts Code
   log(`${files.length} komut yüklenecek.`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);

@@ -7,23 +7,23 @@ exports.run = (client, message, args) => {
 let member = message.mentions.users.first()
 let sebep = args.slice(1).join(" ")
 let guild = message.guild;
-let kanal = 'LogKanalİD'//Log Kanal İD Yazın
+let kanal = 'LogKanalİD'//Log Kanal İD Yazın//Perts Code
 
-if(!member) return message.channel.send("Bir Üye Etıketle")
-
-
-
-if(!sebep) return message.channel.send("Bir Sebep Gir")
-
-
+if(!member) return message.channel.send("Bir Üye Etıketle")//Perts Code
+//Perts Code
+//Perts Code
+//Perts Code
+if(!sebep) return message.channel.send("Bir Sebep Gir")//Perts Code
+//Perts Code
+//Perts Code
 guild.members.ban(member)
 
-const ban = new Discord.MessageEmbed()
-.setThumbnail(message.author.avatarURL())
-.setColor('RANDOM')
-.addField(`Banlanan Kullanıcı`,member)
-.addField(`Yetkili`,message.author)
-.addField(`Sebep`,sebep)
+const ban = new Discord.MessageEmbed()//Perts Code
+.setThumbnail(message.author.avatarURL())//Perts Code
+.setColor('RANDOM')//Perts Code
+.addField(`Banlanan Kullanıcı`,member)//Perts Code
+.addField(`Yetkili`,message.author)//Perts Code
+.addField(`Sebep`,sebep)//Perts Code
 client.channels.cache.get(kanal).send(ban)
 
 

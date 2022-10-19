@@ -2,13 +2,13 @@ const Discord = require("discord.js");
 
 
 exports.run = async (client, message, args) => {
-
-  
-const exampleEmbed = new Discord.MessageEmbed()
-  .addField(`Pingim` ,`${client.ws.ping}ms`)
-  message.channel.send(exampleEmbed)
-  
-  
+//Perts Code
+  //Perts Code
+const exampleEmbed = new Discord.MessageEmbed()//Perts Code
+  .addField(`Pingim` ,`${client.ws.ping}ms`)//Perts Code
+  message.channel.send(exampleEmbed)//Perts Code
+  //Perts Code
+  //Perts Code
 }
   
 exports.conf = {

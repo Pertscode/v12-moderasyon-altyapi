@@ -5,8 +5,8 @@ exports.run = function(client, message) {
   let prefix  = ayarlar.prefix
 
 const yardım = new Discord.MessageEmbed()
-.setColor('GREEN')
-.setAuthor(`GUARD BOT`)
+.setColor('GREEN')//Perts Code
+.setAuthor(`Perts Code`)//Perts Code
 .setDescription(`
 
 
@@ -21,10 +21,10 @@ const yardım = new Discord.MessageEmbed()
 :white_small_square: **=**  \`!ping\`:  **Pinginizi Ölçüp Atar**
 :white_small_square: **=**  \`!avatar\`:  **Avatarınızı Atar**
 
-`)
-.setImage("")
-.setThumbnail(message.author.avatarURL())
-message.channel.send(yardım)
+`)//Perts Code
+.setImage("")//Perts Code
+.setThumbnail(message.author.avatarURL())//Perts Code
+message.channel.send(yardım)//Perts Code
 
   
    
